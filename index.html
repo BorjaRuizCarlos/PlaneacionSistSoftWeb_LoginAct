@@ -27,6 +27,16 @@
 <script>
     function login(event) {
     event.preventDefault();
-    window.location.href='../pages/userHome.html';
-}
+    if (document.querySelector('input[placeholder="User"]').value !== sessionStorage.getItem("username") || document.querySelector('input[placeholder="Password"]').value !== sessionStorage.getItem("password"))
+    {
+        alert("Incorrect username or password");
+        return;
+    }
+    else if (document.querySelector('input[placeholder="User"]').value === sessionStorage.getItem("username") && document.querySelector('input[placeholder="Password"]').value === sessionStorage.getItem("password"))
+    {
+        alert("Login Succesfull");
+        window.location.href='../pages/userHome.html';
+        return;
+    }
+    }
 </script>

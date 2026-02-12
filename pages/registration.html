@@ -11,13 +11,13 @@
         <form action="">
             <h1>Welcome to the Registration Page</h1>
             <div class = "input-box">
-                <input type="text" placeholder="New username"> 
+                <input type="Username" placeholder="New username"> 
             </div> 
             <div class = "input-box">
-                <input type="password" placeholder="Password">
+                <input type="Password" placeholder="Password">
             </div>
             <div>
-                <input type="password" placeholder="Confirm password">
+                <input type="Password" placeholder="Confirm password">
             </div>
             <button class="btn" onclick="Register(event)">Register</button>
             <div>
@@ -27,9 +27,21 @@
     </Div>
 </body>
 </html>
-<script>
+<script>;
     function Register(event) {
         event.preventDefault();
-        window.location.href="../index.html";
+        if (document.querySelector('input[placeholder="Password"]').value !== document.querySelector('input[placeholder="Confirm password"]').value)
+        {
+            alert("Passwords does not match");
+            return;
+        }
+        else if (document.querySelector('input[placeholder="Password"]').value == document.querySelector('input[placeholder="Confirm password"]').value)
+        {
+            sessionStorage.setItem("username", document.querySelector('input[placeholder="New username"]').value);
+            sessionStorage.setItem("password", document.querySelector('input[placeholder="Password"]').value);
+            alert("Registration Succesfull");
+            window.location.href="../index.html";
+            return;
+        }
     }
 </script>
