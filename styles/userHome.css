@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.logo {
+    width: 50px;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+    color: #fff;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: green;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: grey;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+button:hover {
+    background: #a91101;
+}
+
+/*Body config*/ 
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body::after {
+    background-image: url('../imgs/userHomeBackground.png'); /* Cambia el nombre por el correcto */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    content: "";
+    opacity: 0.9;
+    top: 110px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
