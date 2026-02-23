@@ -4,59 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/userHome.css">
+    <link rel="stylesheet" href="../components/componentStyles/header.css">
+    <link rel="stylesheet" href="../components/componentStyles/footer.css">
     <title>UserHomePage</title>
 </head>
 <body>
-    <header>
-        <img class= "logo"src="../imgs/logoForHomePage.png" alt="">
-        <nav>
-            <ul class=" nav_links">
-                <li><a href="../pages/services.html">Services</a></li>
-                <li><a href="../pages/projects.html">Projects</a></li>
-                <li><a href="../pages/about.html">About</a></li>
-            </ul>
-        </nav>
-        <a class="" href="" onclick="logout(event)"><button>Logout</button></a>
-    </header>
+    <!-- Header -->
+    <div id="site-header"></div>
 
     <main class="main-content">
         <h1>Hello World!</h1>
         <h2>here goes the content of this page.</h2>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-row">
-          <!-- Columna 1: Info -->
-          <div class="footer-col">
-            <h4>Insert company name here</h4>
-            <ul>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Our Services</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-          <!-- Columna 2: Redes Sociales -->
-          <div class="footer-col">
-            <h4>Follow us!</h4>
-            <div class="social-links">
-              <a href="#">FB</a>
-              <a href="#">IG</a>
-              <a href="#">TW</a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 Your trademark here. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <!-- Footer -->
+    <div id="site-footer"></div>
 
 </body>
 </html>
 <script>
-    function logout(event) {
-    event.preventDefault();
-    window.location.href='../index.html';
+/*Load header component*/
+async function loadHeader(id, url) {
+  const response = await fetch(url);
+  document.getElementById(id).innerHTML = await response.text();
+  // Load  header.js after HTML
+  const script = document.createElement('script');
+  script.src = '../components/header.js';
+  document.body.appendChild(script);
 }
+
+async function loadFooter(id, url) {
+  const response = await fetch(url);
+  document.getElementById(id).innerHTML = await response.text();
+}
+
+loadHeader('site-header', '../components/header.html');
+loadFooter('site-footer', '../components/footer.html');
 </script>
