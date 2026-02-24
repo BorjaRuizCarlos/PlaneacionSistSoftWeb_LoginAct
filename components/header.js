@@ -2,6 +2,8 @@ const logoutButton = document.getElementById('Button_Act');
 
 function logout(event) {
     event.preventDefault();
+    // Clear auth token on logout
+    sessionStorage.removeItem("authToken");
     window.location.href='../index.html';
 }
 
