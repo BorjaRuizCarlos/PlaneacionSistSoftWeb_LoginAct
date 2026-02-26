@@ -16,13 +16,82 @@
     <div id="site-header"></div>
 
     <main class="main-content">
-        <h1>Hello World!</h1>
-        <h2>here goes the content of this page.</h2>
+        <h1>Pokédex</h1>
+        <p class="pokedex-subtitle">Datos en vivo desde <a href="https://pokeapi.co/" target="_blank">PokeAPI</a></p>
+
+        <!-- Controles: buscador y filtro -->
+        <section class="controls">
+            <form id="controlsForm" autocomplete="off">
+                <div class="control-row">
+                    <input id="q" type="search" placeholder="Buscar por nombre o ID… (ej: pikachu o 25)" />
+                    <select id="typeFilter">
+                        <option value="">Todos los tipos</option>
+                    </select>
+                    <select id="sortBy">
+                        <option value="id-asc">ID ↑</option>
+                        <option value="id-desc">ID ↓</option>
+                        <option value="name-asc">Nombre A→Z</option>
+                        <option value="name-desc">Nombre Z→A</option>
+                    </select>
+                    <button type="submit" class="btn-apply">Buscar</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Grid de tarjetas -->
+        <section id="results" class="cards-grid" aria-live="polite" aria-busy="false"></section>
+
+        <!-- Botón cargar más -->
+        <div class="load-more-wrap">
+            <button id="loadMore" class="btn-load-more" hidden>Cargar más</button>
+        </div>
     </main>
+
+    <!-- Template: tarjeta Pokémon -->
+    <template id="pokemon-card-template">
+        <article class="poke-card" tabindex="0">
+            <div class="poke-card-media">
+                <img class="poke-card-img" src="" alt="" loading="lazy" width="200" height="200" />
+            </div>
+            <div class="poke-card-body">
+                <header class="poke-card-header">
+                    <h2 class="pokemon-name"></h2>
+                    <span class="pokemon-id"></span>
+                </header>
+                <div class="types"></div>
+                <div class="abilities">
+                    <strong>Habilidades:</strong>
+                    <ul class="ability-list"></ul>
+                </div>
+                <details class="stats">
+                    <summary>Stats base</summary>
+                    <ul class="stats-list"></ul>
+                </details>
+            </div>
+        </article>
+    </template>
+
+    <!-- Template: skeleton loading -->
+    <template id="pokemon-card-skeleton">
+        <article class="poke-card skeleton" aria-hidden="true">
+            <div class="poke-card-media">
+                <div class="sk-img"></div>
+            </div>
+            <div class="poke-card-body">
+                <div class="sk-line sk-title"></div>
+                <div class="sk-line sk-id-line"></div>
+                <div class="sk-chip-row"></div>
+                <div class="sk-line"></div>
+                <div class="sk-line"></div>
+            </div>
+        </article>
+    </template>
 
     <!-- Footer -->
     <div id="site-footer"></div>
 
+    <!-- PokeAPI script -->
+    <script src="../pokeapi.js" defer></script>
 </body>
 </html>
 <script>
